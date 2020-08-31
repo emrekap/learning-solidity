@@ -1,13 +1,14 @@
 pragma solidity ^0.4.0;
 
 contract GravatarRegistry {
-  event NewGravatar(uint id, address owner, string displayName, string imageUrl);
+  event NewGravatar(uint id, address owner, string displayName, string imageUrl, string lastname);
   event UpdatedGravatar(uint id, address owner, string displayName, string imageUrl);
 
   struct Gravatar {
     address owner;
     string displayName;
     string imageUrl;
+    string lastname
   }
 
   Gravatar[] public gravatars;
@@ -15,14 +16,14 @@ contract GravatarRegistry {
   mapping (uint => address) public gravatarToOwner;
   mapping (address => uint) public ownerToGravatar;
 
-  function createGravatar(string _displayName, string _imageUrl) public {
+  function createGravatar(string _displayName, string _imageUrl, string _lastname) public {
     require(ownerToGravatar[msg.sender] == 0);
-    uint id = gravatars.push(Gravatar(msg.sender, _displayName, _imageUrl)) - 1;
+    uint id = gravatars.push(Gravatar(msg.sender, _displayName, _imageUrl, _lastname)) - 1;
 
     gravatarToOwner[id] = msg.sender;
     ownerToGravatar[msg.sender] = id;
 
-    emit NewGravatar(id, msg.sender, _displayName, _imageUrl);
+    emit NewGravatar(id, msg.sender, _displayName, _imageUrl, _lastname);
   }
 
   function getGravatar(address owner) public view returns (string, string) {

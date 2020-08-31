@@ -6,10 +6,10 @@ module.exports = async function(deployer) {
   console.log('Account address:', registry.address)
 
   let accounts = await web3.eth.getAccounts()
-  await registry.createGravatar('Carl', 'https://thegraph.com/img/team/team_04.png', {
+  await registry.createGravatar('Carl', 'https://thegraph.com/img/team/team_04.png', "kaplan", {
     from: accounts[0],
   })
-  await registry.createGravatar('Lucas', 'https://thegraph.com/img/team/bw_Lucas.jpg', {
+  await registry.createGravatar('Lucas', 'https://thegraph.com/img/team/bw_Lucas.jpg', "kaplan", {
     from: accounts[1],
   })
 }
