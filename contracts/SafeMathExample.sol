@@ -6,8 +6,8 @@ import "github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.9/contrac
 contract MySafeMathContract {
 
     using SafeMath for uint256;
-    function addition(uint256 a, uint256 b) public payable returns (bool,uint256) {
-        return a.tryAdd(b);
+    function addition(uint256 av, uint256 b) public payable returns (bool,uint256) {
+        return av.tryAdd(b);
     }
     
     function multiply(uint256 a, uint256 b) public payable returns (bool,uint256) { 
